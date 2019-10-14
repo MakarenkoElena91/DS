@@ -17,8 +17,8 @@ private static final long serialVersionUID = 0L;
   }
   private ValidationRequest() {
     password_ = "";
-    hashedPassword_ = "";
-    salt_ = "";
+    hash_ = com.google.protobuf.ByteString.EMPTY;
+    salt_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -58,15 +58,13 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            hashedPassword_ = s;
+            hash_ = input.readBytes();
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            salt_ = s;
+            salt_ = input.readBytes();
             break;
           }
           default: {
@@ -135,72 +133,22 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int HASHEDPASSWORD_FIELD_NUMBER = 2;
-  private volatile java.lang.Object hashedPassword_;
+  public static final int HASH_FIELD_NUMBER = 2;
+  private com.google.protobuf.ByteString hash_;
   /**
-   * <code>string hashedPassword = 2;</code>
+   * <code>bytes hash = 2;</code>
    */
-  public java.lang.String getHashedPassword() {
-    java.lang.Object ref = hashedPassword_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      hashedPassword_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string hashedPassword = 2;</code>
-   */
-  public com.google.protobuf.ByteString
-      getHashedPasswordBytes() {
-    java.lang.Object ref = hashedPassword_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      hashedPassword_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.google.protobuf.ByteString getHash() {
+    return hash_;
   }
 
   public static final int SALT_FIELD_NUMBER = 3;
-  private volatile java.lang.Object salt_;
+  private com.google.protobuf.ByteString salt_;
   /**
-   * <code>string salt = 3;</code>
+   * <code>bytes salt = 3;</code>
    */
-  public java.lang.String getSalt() {
-    java.lang.Object ref = salt_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      salt_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string salt = 3;</code>
-   */
-  public com.google.protobuf.ByteString
-      getSaltBytes() {
-    java.lang.Object ref = salt_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      salt_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.google.protobuf.ByteString getSalt() {
+    return salt_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -220,11 +168,11 @@ private static final long serialVersionUID = 0L;
     if (!getPasswordBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, password_);
     }
-    if (!getHashedPasswordBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, hashedPassword_);
+    if (!hash_.isEmpty()) {
+      output.writeBytes(2, hash_);
     }
-    if (!getSaltBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, salt_);
+    if (!salt_.isEmpty()) {
+      output.writeBytes(3, salt_);
     }
     unknownFields.writeTo(output);
   }
@@ -238,11 +186,13 @@ private static final long serialVersionUID = 0L;
     if (!getPasswordBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, password_);
     }
-    if (!getHashedPasswordBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, hashedPassword_);
+    if (!hash_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(2, hash_);
     }
-    if (!getSaltBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, salt_);
+    if (!salt_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(3, salt_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -261,8 +211,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getPassword()
         .equals(other.getPassword())) return false;
-    if (!getHashedPassword()
-        .equals(other.getHashedPassword())) return false;
+    if (!getHash()
+        .equals(other.getHash())) return false;
     if (!getSalt()
         .equals(other.getSalt())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -278,8 +228,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
     hash = (53 * hash) + getPassword().hashCode();
-    hash = (37 * hash) + HASHEDPASSWORD_FIELD_NUMBER;
-    hash = (53 * hash) + getHashedPassword().hashCode();
+    hash = (37 * hash) + HASH_FIELD_NUMBER;
+    hash = (53 * hash) + getHash().hashCode();
     hash = (37 * hash) + SALT_FIELD_NUMBER;
     hash = (53 * hash) + getSalt().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -417,9 +367,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       password_ = "";
 
-      hashedPassword_ = "";
+      hash_ = com.google.protobuf.ByteString.EMPTY;
 
-      salt_ = "";
+      salt_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
     }
@@ -448,7 +398,7 @@ private static final long serialVersionUID = 0L;
     public ie.gmit.ds.ValidationRequest buildPartial() {
       ie.gmit.ds.ValidationRequest result = new ie.gmit.ds.ValidationRequest(this);
       result.password_ = password_;
-      result.hashedPassword_ = hashedPassword_;
+      result.hash_ = hash_;
       result.salt_ = salt_;
       onBuilt();
       return result;
@@ -502,13 +452,11 @@ private static final long serialVersionUID = 0L;
         password_ = other.password_;
         onChanged();
       }
-      if (!other.getHashedPassword().isEmpty()) {
-        hashedPassword_ = other.hashedPassword_;
-        onChanged();
+      if (other.getHash() != com.google.protobuf.ByteString.EMPTY) {
+        setHash(other.getHash());
       }
-      if (!other.getSalt().isEmpty()) {
-        salt_ = other.salt_;
-        onChanged();
+      if (other.getSalt() != com.google.protobuf.ByteString.EMPTY) {
+        setSalt(other.getSalt());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -608,112 +556,46 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object hashedPassword_ = "";
+    private com.google.protobuf.ByteString hash_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string hashedPassword = 2;</code>
+     * <code>bytes hash = 2;</code>
      */
-    public java.lang.String getHashedPassword() {
-      java.lang.Object ref = hashedPassword_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        hashedPassword_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public com.google.protobuf.ByteString getHash() {
+      return hash_;
     }
     /**
-     * <code>string hashedPassword = 2;</code>
+     * <code>bytes hash = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getHashedPasswordBytes() {
-      java.lang.Object ref = hashedPassword_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        hashedPassword_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string hashedPassword = 2;</code>
-     */
-    public Builder setHashedPassword(
-        java.lang.String value) {
+    public Builder setHash(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      hashedPassword_ = value;
+      hash_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string hashedPassword = 2;</code>
+     * <code>bytes hash = 2;</code>
      */
-    public Builder clearHashedPassword() {
+    public Builder clearHash() {
       
-      hashedPassword_ = getDefaultInstance().getHashedPassword();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string hashedPassword = 2;</code>
-     */
-    public Builder setHashedPasswordBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      hashedPassword_ = value;
+      hash_ = getDefaultInstance().getHash();
       onChanged();
       return this;
     }
 
-    private java.lang.Object salt_ = "";
+    private com.google.protobuf.ByteString salt_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string salt = 3;</code>
+     * <code>bytes salt = 3;</code>
      */
-    public java.lang.String getSalt() {
-      java.lang.Object ref = salt_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        salt_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public com.google.protobuf.ByteString getSalt() {
+      return salt_;
     }
     /**
-     * <code>string salt = 3;</code>
+     * <code>bytes salt = 3;</code>
      */
-    public com.google.protobuf.ByteString
-        getSaltBytes() {
-      java.lang.Object ref = salt_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        salt_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string salt = 3;</code>
-     */
-    public Builder setSalt(
-        java.lang.String value) {
+    public Builder setSalt(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
@@ -723,25 +605,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string salt = 3;</code>
+     * <code>bytes salt = 3;</code>
      */
     public Builder clearSalt() {
       
       salt_ = getDefaultInstance().getSalt();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string salt = 3;</code>
-     */
-    public Builder setSaltBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      salt_ = value;
       onChanged();
       return this;
     }

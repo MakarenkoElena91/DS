@@ -3,8 +3,8 @@
 
 package ie.gmit.ds;
 
-public interface LoginRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ie.gmit.ds.LoginRequest)
+public interface HashRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:ie.gmit.ds.HashRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

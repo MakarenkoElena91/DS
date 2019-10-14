@@ -4,18 +4,18 @@
 package ie.gmit.ds;
 
 /**
- * Protobuf type {@code ie.gmit.ds.LoginRequest}
+ * Protobuf type {@code ie.gmit.ds.HashRequest}
  */
-public  final class LoginRequest extends
+public  final class HashRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ie.gmit.ds.LoginRequest)
-    LoginRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:ie.gmit.ds.HashRequest)
+    HashRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use LoginRequest.newBuilder() to construct.
-  private LoginRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use HashRequest.newBuilder() to construct.
+  private HashRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private LoginRequest() {
+  private HashRequest() {
     password_ = "";
   }
 
@@ -23,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new LoginRequest();
+    return new HashRequest();
   }
 
   @java.lang.Override
@@ -31,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LoginRequest(
+  private HashRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -81,15 +81,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_LoginRequest_descriptor;
+    return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_HashRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_LoginRequest_fieldAccessorTable
+    return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_HashRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            ie.gmit.ds.LoginRequest.class, ie.gmit.ds.LoginRequest.Builder.class);
+            ie.gmit.ds.HashRequest.class, ie.gmit.ds.HashRequest.Builder.class);
   }
 
   public static final int USERID_FIELD_NUMBER = 1;
@@ -181,10 +181,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof ie.gmit.ds.LoginRequest)) {
+    if (!(obj instanceof ie.gmit.ds.HashRequest)) {
       return super.equals(obj);
     }
-    ie.gmit.ds.LoginRequest other = (ie.gmit.ds.LoginRequest) obj;
+    ie.gmit.ds.HashRequest other = (ie.gmit.ds.HashRequest) obj;
 
     if (getUserId()
         != other.getUserId()) return false;
@@ -210,69 +210,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(byte[] data)
+  public static ie.gmit.ds.HashRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(java.io.InputStream input)
+  public static ie.gmit.ds.HashRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ie.gmit.ds.LoginRequest parseDelimitedFrom(java.io.InputStream input)
+  public static ie.gmit.ds.HashRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static ie.gmit.ds.LoginRequest parseDelimitedFrom(
+  public static ie.gmit.ds.HashRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static ie.gmit.ds.LoginRequest parseFrom(
+  public static ie.gmit.ds.HashRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -285,7 +285,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(ie.gmit.ds.LoginRequest prototype) {
+  public static Builder newBuilder(ie.gmit.ds.HashRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -301,26 +301,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ie.gmit.ds.LoginRequest}
+   * Protobuf type {@code ie.gmit.ds.HashRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ie.gmit.ds.LoginRequest)
-      ie.gmit.ds.LoginRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ie.gmit.ds.HashRequest)
+      ie.gmit.ds.HashRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_LoginRequest_descriptor;
+      return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_HashRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_LoginRequest_fieldAccessorTable
+      return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_HashRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ie.gmit.ds.LoginRequest.class, ie.gmit.ds.LoginRequest.Builder.class);
+              ie.gmit.ds.HashRequest.class, ie.gmit.ds.HashRequest.Builder.class);
     }
 
-    // Construct using ie.gmit.ds.LoginRequest.newBuilder()
+    // Construct using ie.gmit.ds.HashRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -348,17 +348,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_LoginRequest_descriptor;
+      return ie.gmit.ds.PasswordServiceOuterClass.internal_static_ie_gmit_ds_HashRequest_descriptor;
     }
 
     @java.lang.Override
-    public ie.gmit.ds.LoginRequest getDefaultInstanceForType() {
-      return ie.gmit.ds.LoginRequest.getDefaultInstance();
+    public ie.gmit.ds.HashRequest getDefaultInstanceForType() {
+      return ie.gmit.ds.HashRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public ie.gmit.ds.LoginRequest build() {
-      ie.gmit.ds.LoginRequest result = buildPartial();
+    public ie.gmit.ds.HashRequest build() {
+      ie.gmit.ds.HashRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -366,8 +366,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public ie.gmit.ds.LoginRequest buildPartial() {
-      ie.gmit.ds.LoginRequest result = new ie.gmit.ds.LoginRequest(this);
+    public ie.gmit.ds.HashRequest buildPartial() {
+      ie.gmit.ds.HashRequest result = new ie.gmit.ds.HashRequest(this);
       result.userId_ = userId_;
       result.password_ = password_;
       onBuilt();
@@ -408,16 +408,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof ie.gmit.ds.LoginRequest) {
-        return mergeFrom((ie.gmit.ds.LoginRequest)other);
+      if (other instanceof ie.gmit.ds.HashRequest) {
+        return mergeFrom((ie.gmit.ds.HashRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(ie.gmit.ds.LoginRequest other) {
-      if (other == ie.gmit.ds.LoginRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(ie.gmit.ds.HashRequest other) {
+      if (other == ie.gmit.ds.HashRequest.getDefaultInstance()) return this;
       if (other.getUserId() != 0) {
         setUserId(other.getUserId());
       }
@@ -440,11 +440,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      ie.gmit.ds.LoginRequest parsedMessage = null;
+      ie.gmit.ds.HashRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (ie.gmit.ds.LoginRequest) e.getUnfinishedMessage();
+        parsedMessage = (ie.gmit.ds.HashRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -561,41 +561,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ie.gmit.ds.LoginRequest)
+    // @@protoc_insertion_point(builder_scope:ie.gmit.ds.HashRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:ie.gmit.ds.LoginRequest)
-  private static final ie.gmit.ds.LoginRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ie.gmit.ds.HashRequest)
+  private static final ie.gmit.ds.HashRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new ie.gmit.ds.LoginRequest();
+    DEFAULT_INSTANCE = new ie.gmit.ds.HashRequest();
   }
 
-  public static ie.gmit.ds.LoginRequest getDefaultInstance() {
+  public static ie.gmit.ds.HashRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LoginRequest>
-      PARSER = new com.google.protobuf.AbstractParser<LoginRequest>() {
+  private static final com.google.protobuf.Parser<HashRequest>
+      PARSER = new com.google.protobuf.AbstractParser<HashRequest>() {
     @java.lang.Override
-    public LoginRequest parsePartialFrom(
+    public HashRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LoginRequest(input, extensionRegistry);
+      return new HashRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<LoginRequest> parser() {
+  public static com.google.protobuf.Parser<HashRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<LoginRequest> getParserForType() {
+  public com.google.protobuf.Parser<HashRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public ie.gmit.ds.LoginRequest getDefaultInstanceForType() {
+  public ie.gmit.ds.HashRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

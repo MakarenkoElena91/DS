@@ -27,29 +27,29 @@ public final class PasswordServiceGrpc {
   public static final String SERVICE_NAME = "ie.gmit.ds.PasswordService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<ie.gmit.ds.LoginRequest,
-      ie.gmit.ds.LoginResponse> getHashMethod;
+  private static volatile io.grpc.MethodDescriptor<ie.gmit.ds.HashRequest,
+      ie.gmit.ds.HashResponse> getHashMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "hash",
-      requestType = ie.gmit.ds.LoginRequest.class,
-      responseType = ie.gmit.ds.LoginResponse.class,
+      requestType = ie.gmit.ds.HashRequest.class,
+      responseType = ie.gmit.ds.HashResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<ie.gmit.ds.LoginRequest,
-      ie.gmit.ds.LoginResponse> getHashMethod() {
-    io.grpc.MethodDescriptor<ie.gmit.ds.LoginRequest, ie.gmit.ds.LoginResponse> getHashMethod;
+  public static io.grpc.MethodDescriptor<ie.gmit.ds.HashRequest,
+      ie.gmit.ds.HashResponse> getHashMethod() {
+    io.grpc.MethodDescriptor<ie.gmit.ds.HashRequest, ie.gmit.ds.HashResponse> getHashMethod;
     if ((getHashMethod = PasswordServiceGrpc.getHashMethod) == null) {
       synchronized (PasswordServiceGrpc.class) {
         if ((getHashMethod = PasswordServiceGrpc.getHashMethod) == null) {
           PasswordServiceGrpc.getHashMethod = getHashMethod =
-              io.grpc.MethodDescriptor.<ie.gmit.ds.LoginRequest, ie.gmit.ds.LoginResponse>newBuilder()
+              io.grpc.MethodDescriptor.<ie.gmit.ds.HashRequest, ie.gmit.ds.HashResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "hash"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ie.gmit.ds.LoginRequest.getDefaultInstance()))
+                  ie.gmit.ds.HashRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  ie.gmit.ds.LoginResponse.getDefaultInstance()))
+                  ie.gmit.ds.HashResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PasswordServiceMethodDescriptorSupplier("hash"))
               .build();
         }
@@ -118,8 +118,8 @@ public final class PasswordServiceGrpc {
 
     /**
      */
-    public void hash(ie.gmit.ds.LoginRequest request,
-        io.grpc.stub.StreamObserver<ie.gmit.ds.LoginResponse> responseObserver) {
+    public void hash(ie.gmit.ds.HashRequest request,
+        io.grpc.stub.StreamObserver<ie.gmit.ds.HashResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getHashMethod(), responseObserver);
     }
 
@@ -136,8 +136,8 @@ public final class PasswordServiceGrpc {
             getHashMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                ie.gmit.ds.LoginRequest,
-                ie.gmit.ds.LoginResponse>(
+                ie.gmit.ds.HashRequest,
+                ie.gmit.ds.HashResponse>(
                   this, METHODID_HASH)))
           .addMethod(
             getValidateMethod(),
@@ -170,8 +170,8 @@ public final class PasswordServiceGrpc {
 
     /**
      */
-    public void hash(ie.gmit.ds.LoginRequest request,
-        io.grpc.stub.StreamObserver<ie.gmit.ds.LoginResponse> responseObserver) {
+    public void hash(ie.gmit.ds.HashRequest request,
+        io.grpc.stub.StreamObserver<ie.gmit.ds.HashResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getHashMethod(), getCallOptions()), request, responseObserver);
     }
@@ -205,7 +205,7 @@ public final class PasswordServiceGrpc {
 
     /**
      */
-    public ie.gmit.ds.LoginResponse hash(ie.gmit.ds.LoginRequest request) {
+    public ie.gmit.ds.HashResponse hash(ie.gmit.ds.HashRequest request) {
       return blockingUnaryCall(
           getChannel(), getHashMethod(), getCallOptions(), request);
     }
@@ -238,8 +238,8 @@ public final class PasswordServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<ie.gmit.ds.LoginResponse> hash(
-        ie.gmit.ds.LoginRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<ie.gmit.ds.HashResponse> hash(
+        ie.gmit.ds.HashRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getHashMethod(), getCallOptions()), request);
     }
@@ -274,8 +274,8 @@ public final class PasswordServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_HASH:
-          serviceImpl.hash((ie.gmit.ds.LoginRequest) request,
-              (io.grpc.stub.StreamObserver<ie.gmit.ds.LoginResponse>) responseObserver);
+          serviceImpl.hash((ie.gmit.ds.HashRequest) request,
+              (io.grpc.stub.StreamObserver<ie.gmit.ds.HashResponse>) responseObserver);
           break;
         case METHODID_VALIDATE:
           serviceImpl.validate((ie.gmit.ds.ValidationRequest) request,
