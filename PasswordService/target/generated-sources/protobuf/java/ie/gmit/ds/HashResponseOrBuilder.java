@@ -13,9 +13,9 @@ public interface HashResponseOrBuilder extends
   int getUserId();
 
   /**
-   * <code>bytes hash = 2;</code>
+   * <code>bytes hashedPassword = 2;</code>
    */
-  com.google.protobuf.ByteString getHash();
+  com.google.protobuf.ByteString getHashedPassword();
 
   /**
    * <code>bytes salt = 3;</code>
