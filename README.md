@@ -13,4 +13,4 @@ e.g.
 ```java -jar PasswordService-1.0-SNAPSHOT.jar 50555```
 
 
-If no parameter or wrong parameter is provided the server will be listening on the default port
+If no parameter or wrong parameter(reserved port #, invalid string) is provided the server will be listening on the default port.
