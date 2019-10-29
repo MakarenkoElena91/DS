@@ -18,7 +18,9 @@ public class PasswordServiceImpl extends PasswordServiceGrpc.PasswordServiceImpl
         try{
             responseObserver.onNext(hashResponse);
         }catch(RuntimeException ex){
-            System.out.println("Something went wrong");
+            //StackTraceElement element;
+
+            System.out.println("Something went wrong: " + ex.getMessage());
         }
 
         responseObserver.onCompleted();
