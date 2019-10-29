@@ -18,9 +18,8 @@ public class PasswordServiceImpl extends PasswordServiceGrpc.PasswordServiceImpl
         try{
             responseObserver.onNext(hashResponse);
         }catch(RuntimeException ex){
-            //StackTraceElement element;
-
-            System.out.println("Something went wrong: " + ex.getMessage());
+           ex.printStackTrace();
+           // System.out.println("Something went wrong: " + ex.getMessage());
         }
 
         responseObserver.onCompleted();
@@ -37,7 +36,8 @@ public class PasswordServiceImpl extends PasswordServiceGrpc.PasswordServiceImpl
         try{
             responseObserver.onNext(BoolValue.newBuilder().setValue(isExpectedPassword).build());
         }catch(RuntimeException ex){
-            System.out.println("Something went wrong");
+            ex.printStackTrace();
+           // System.out.println("Something went wrong");
         }
         responseObserver.onCompleted();
     }

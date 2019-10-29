@@ -8,7 +8,11 @@ import java.util.logging.Logger;
 public class Server {
     private io.grpc.Server grpcServer;
     private static final Logger logger = Logger.getLogger(PasswordServiceImpl.class.getName());
-    private static final int PORT = 50551;
+    private static int PORT = 50551;
+
+    public Server(int port) {
+        this.PORT = port;
+    }
 
     private void start() throws IOException {
         grpcServer = ServerBuilder.forPort(PORT)
@@ -34,9 +38,26 @@ public class Server {
         }
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        final Server server = new Server();
-        server.start();
-        server.blockUntilShutdown();
+    public static void main(String[] args) {
+        Server server = new Server(50551);
+        try {
+            int port = Integer.parseInt(args[0]);
+            server = new Server(port);
+            server.start();
+        } catch (ArrayIndexOutOfBoundsException | IOException | NumberFormatException e) {
+            logger.info("Something went wrong: Port number is incorrect/ Port number wasn't provided as a parameter/You're using a reserved port #. ");
+            logger.info("Listening on default port 50551...");
+            server = new Server(50551);
+            try {
+                server.start();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        try {
+            server.blockUntilShutdown();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
