@@ -1,0 +1,9 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 3000
+
+logging:
+  #It can take values: OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  #INFO is default level of all loggers.
+  level: INFO

@@ -4,6 +4,7 @@ import com.google.protobuf.BoolValue;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import io.grpc.stub.StreamObserver;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -31,12 +32,23 @@ public class Client {
     }
 
 
-    public Optional<HashResponse> hashPassword(HashRequest hashRequest) {
+    public Optional<HashResponse> hashPassword(HashRequest hashRequest, StreamObserver<HashResponse> responseObserver) {
         logger.info("Hashing password... " + hashRequest);
         Optional <HashResponse> hashResponse = Optional.empty();
+//        try {
+//            hashResponse = Optional.of(syncPasswordService.hash(hashRequest));
+//        } catch (StatusRuntimeException ex) {
+//            logger.log(Level.WARNING, "RPC failed: {0}", ex.getStatus());
+//            return hashResponse;
+//        }
+//        return hashResponse;
+
         try {
-            hashResponse = Optional.of(syncPasswordService.hash(hashRequest));
-        } catch (StatusRuntimeException ex) {
+            logger.info("Requesting all items ");
+            asyncPasswordService.hash(hashRequest, responseObserver);
+            logger.info("Returned from requesting all items ");
+        } catch (
+                StatusRuntimeException ex) {
             logger.log(Level.WARNING, "RPC failed: {0}", ex.getStatus());
             return hashResponse;
         }
@@ -60,27 +72,27 @@ public class Client {
         }
         return isValid;
     }
-    public static void main(String[] args) throws Exception {
-        Client client = new Client("localhost", 50551);
-        String pass = Passwords.generateRandomPassword(8);
-        HashRequest password = HashRequest.newBuilder()
-                .setUserId(1)
-                .setPassword(pass)
-                .build();
-
-
-        try {
-            HashResponse hashResponse = client.hashPassword(password).orElseThrow(()-> new RuntimeException("It is null"));
-            ValidationRequest validationRequest = ValidationRequest.newBuilder()
-                    .setHashedPassword(hashResponse.getHashedPassword())
-                    .setPassword(pass)
-                    .setSalt(hashResponse.getSalt())
-                    .build();
-
-            BoolValue boolValue = client.validatePassword(validationRequest);
-            System.out.println("Is valid? " + (boolValue.getValue() ? "valid" : "not valid"));
-        } finally {
-            // Don't stop process, keep alive to receive async response
-            Thread.currentThread().join();
-        }}
+//    public static void main(String[] args) throws Exception {
+//        Client client = new Client("localhost", 50551);
+//        String pass = Passwords.generateRandomPassword(8);
+//        HashRequest password = HashRequest.newBuilder()
+//                .setUserId(1)
+//                .setPassword(pass)
+//                .build();
+//
+//
+//        try {
+//            HashResponse hashResponse = client.hashPassword(password).orElseThrow(()-> new RuntimeException("It is null"));
+//            ValidationRequest validationRequest = ValidationRequest.newBuilder()
+//                    .setHashedPassword(hashResponse.getHashedPassword())
+//                    .setPassword(pass)
+//                    .setSalt(hashResponse.getSalt())
+//                    .build();
+//
+//            BoolValue boolValue = client.validatePassword(validationRequest);
+//            System.out.println("Is valid? " + (boolValue.getValue() ? "valid" : "not valid"));
+//        } finally {
+//            // Don't stop process, keep alive to receive async response
+//            Thread.currentThread().join();
+//        }}
 }
