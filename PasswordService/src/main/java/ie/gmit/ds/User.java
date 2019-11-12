@@ -19,7 +19,7 @@ public class User {
     private String email;
 
 //    @NotEmpty
-    private String password;
+   // private String password;
 
 //    @NotEmpty
     private ByteString hashedPassword;
@@ -30,11 +30,10 @@ public class User {
     public User(){
     }
 
-    public User(int userId, String userName, String email, String password) {
+    public User(int userId, String userName, String email) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
-        this.password = password;
     }
 
     public User(int userId, String userName, String email, ByteString hashedPassword, ByteString salt) {
@@ -63,11 +62,6 @@ public class User {
     @JsonProperty
     public String getEmail() {
         return email;
-    }
-
-    @JsonProperty
-    public String getPassword() {
-        return password;
     }
 
     public ByteString getHashedPassword() {

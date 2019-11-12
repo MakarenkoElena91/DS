@@ -7,11 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c44e68bd-182a-465f-bb5d-903691ec54bf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserPassword.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../LICENSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ie/gmit/ds/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserDB.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +50,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ie" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,6 +84,7 @@
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ie.gmit.ds.App" />
       <module name="PasswordService" />
+      <option name="PROGRAM_PARAMETERS" value="server config.yml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ie.gmit.ds.UserApiResource" />
@@ -122,6 +129,13 @@
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/PasswordService_jar2/PasswordService.jar" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="JAR Application.PasswordService-1.0-SNAPSHOT.jar" />
+      <item itemvalue="JAR Application.PasswordService.jar" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
@@ -147,7 +161,9 @@
       <workItem from="1571998233985" duration="108000" />
       <workItem from="1572357696946" duration="15559000" />
       <workItem from="1572434359924" duration="4114000" />
-      <workItem from="1572882266751" duration="28776000" />
+      <workItem from="1572882266751" duration="37593000" />
+      <workItem from="1573050355418" duration="558000" />
+      <workItem from="1573488076740" duration="1686000" />
     </task>
     <servers />
   </component>

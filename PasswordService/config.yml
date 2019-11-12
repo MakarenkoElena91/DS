@@ -2,8 +2,13 @@ server:
   applicationConnectors:
     - type: http
       port: 3000
+passwordServiceIp: 127.0.0.1
+passwordServicePort: 50551
 
 logging:
   #It can take values: OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
   #INFO is default level of all loggers.
   level: INFO
+
+
+
