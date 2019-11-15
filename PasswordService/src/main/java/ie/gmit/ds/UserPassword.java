@@ -2,6 +2,10 @@ package ie.gmit.ds;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "root")
 public class UserPassword {
     private User user;
     private String password;
@@ -9,25 +13,29 @@ public class UserPassword {
     public UserPassword() {
     }
 
-    public UserPassword(String password, User user) {
-        this.password = password;
+    public UserPassword(User user, String password) {
         this.user = user;
+        this.password = password;
     }
 
     @JsonProperty
+    @XmlElement
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
+    @XmlElement
     public User getUser() {
         return user;
     }
 
-    @Override
-    public String toString() {
-        return "UserPassword{" +
-                "password='" + password + '\'' +
-                ", user=" + user +
-                '}';
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

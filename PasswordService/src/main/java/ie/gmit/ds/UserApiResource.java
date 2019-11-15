@@ -7,17 +7,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import javax.ws.rs.*;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 @Path("/users")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class UserApiResource {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserApiResource.class);
     private final Validator validator;
@@ -31,7 +34,9 @@ public class UserApiResource {
 
     @GET
     public Response getUsers() {
-        return Response.ok(userDB.getUsers()).build();
+        // https://stackoverflow.com/a/18240578/5322506
+        GenericEntity<List<User>> gList = new GenericEntity<>(userDB.getUsers()) {};
+        return Response.ok(gList).build();
     }
 
     @GET
@@ -46,10 +51,10 @@ public class UserApiResource {
 
     @POST
     public Response createUser(UserPassword userPassword){
+        LOGGER.info("POST: createUser() - {}", userPassword);
+
         User e = userDB.getUser(userPassword.getUser().getUserId());
         if (e == null) {
-            LOGGER.info("POST: createUser() - {}", userPassword);
-
             HashRequest request = HashRequest.newBuilder()
                     .setUserId(userPassword.getUser().getUserId())
                     .setPassword(userPassword.getPassword())
@@ -62,7 +67,7 @@ public class UserApiResource {
                     ByteString salt = hashResponse.getSalt();
                     ByteString hashedPassword = hashResponse.getHashedPassword();
                     newUser = new User(userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), hashedPassword, salt);
-
+                    userDB.updateUser(newUser.getUserId(), newUser);
                     LOGGER.info("Created new user: " + hashResponse);
                 }
 
@@ -128,7 +133,7 @@ public class UserApiResource {
 
             client.hashPassword(request, responseObserver);
 
-            userPassword.getUser().setUserId(id);
+            userPassword.getUser().setUserId(id); // TODO: WTF ??????
             userDB.updateUser(id, userPassword.getUser());
             return Response.ok("User was updated: {}").build();
         } else
