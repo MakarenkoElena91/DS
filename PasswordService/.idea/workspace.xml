@@ -8,11 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c44e68bd-182a-465f-bb5d-903691ec54bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserPassword.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
