@@ -35,7 +35,8 @@ public class UserApiResource {
     @GET
     public Response getUsers() {
         // https://stackoverflow.com/a/18240578/5322506
-        GenericEntity<List<User>> gList = new GenericEntity<>(userDB.getUsers()) {};
+        GenericEntity<List<User>> gList = new GenericEntity<>(userDB.getUsers()) {
+        };
         return Response.ok(gList).build();
     }
 
@@ -50,7 +51,7 @@ public class UserApiResource {
     }
 
     @POST
-    public Response createUser(UserPassword userPassword){
+    public Response createUser(UserPassword userPassword) {
         LOGGER.info("POST: createUser() - {}", userPassword);
 
         User e = userDB.getUser(userPassword.getUser().getUserId());
@@ -93,7 +94,7 @@ public class UserApiResource {
     @PUT
     @Path("/{id}")
     public Response updateUserById(@PathParam("id") Integer id, UserPassword userPassword) {
-        // validation
+
         Set<ConstraintViolation<UserPassword>> violations = validator.validate(userPassword);
         User e = userDB.getUser(userPassword.getUser().getUserId());
         if (violations.size() > 0) {
@@ -115,7 +116,7 @@ public class UserApiResource {
                 public void onNext(HashResponse hashResponse) {
                     ByteString salt = hashResponse.getSalt();
                     ByteString hashedPassword = hashResponse.getHashedPassword();
-                    newUser = new User (userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), hashedPassword, salt);
+                    newUser = new User(userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), hashedPassword, salt);
 
                     LOGGER.info("Updated new user: " + hashResponse);
                 }
@@ -133,7 +134,7 @@ public class UserApiResource {
 
             client.hashPassword(request, responseObserver);
 
-            userPassword.getUser().setUserId(id); // TODO: WTF ??????
+            userPassword.getUser().setUserId(id);
             userDB.updateUser(id, userPassword.getUser());
             return Response.ok("User was updated: {}").build();
         } else
@@ -155,24 +156,27 @@ public class UserApiResource {
     @POST
     @Path("/login")
     public Response login(UserPassword userPassword) {
-        User userInDB = userDB.getUser(userPassword.getUser().getUserId());
+        Response response;
+        try {
+            User userInDB = userDB.getUser(userPassword.getUser().getUserId());
+            String pass = userPassword.getPassword();
 
-        var pass = userPassword.getPassword();
+            ValidationRequest validationRequest = ValidationRequest.newBuilder()
+                    .setHashedPassword(userInDB.getHashedPassword())
+                    .setPassword(pass)
+                    .setSalt(userInDB.getSalt())
+                    .build();
+            BoolValue boolValue = client.validatePassword(validationRequest);
 
-        ValidationRequest validationRequest = ValidationRequest.newBuilder()
-                .setHashedPassword(userInDB.getHashedPassword())
-                .setPassword(pass)
-                .setSalt(userInDB.getSalt())
-                .build();
-
-        BoolValue boolValue = client.validatePassword(validationRequest);
-
-
-        if (userPassword != null) {
-            if (boolValue.getValue()) {
-                LOGGER.info("Logging: {}", userPassword);
-                return Response.ok("OK").build();
-            } else return Response.status(Status.NOT_ACCEPTABLE).build();
-        } else return Response.status(Status.NOT_FOUND).build();
+            if (userPassword != null) {
+                if (boolValue.getValue()) {
+                    LOGGER.info("Logging: {}", userPassword);
+                    response = Response.ok("OK").build();
+                } else response = Response.status(Status.NOT_ACCEPTABLE).build();
+            } else response = Response.status(Status.NOT_FOUND).build();
+        } catch (Exception e) {
+            response = Response.status(Status.SERVICE_UNAVAILABLE).build();
+        }
+        return response;
     }
 }
