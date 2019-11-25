@@ -1,6 +1,7 @@
 package ie.gmit.ds;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "root")
 public class UserPassword {
     private User user;
+    @NotEmpty
     private String password;
 
     public UserPassword() {

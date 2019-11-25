@@ -1,7 +1,6 @@
 package ie.gmit.ds;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.protobuf.ByteString;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Pattern;
@@ -18,9 +17,9 @@ public class User {
     @Pattern(regexp=".+@.+\\.[a-z]+")
     private String email;
 
-    private ByteString hashedPassword;
+    private String hashedPassword;
 
-    private ByteString salt;
+    private String salt;
 
     public User(){
     }
@@ -31,7 +30,7 @@ public class User {
         this.email = email;
     }
 
-    public User(int userId, String userName, String email, ByteString hashedPassword, ByteString salt) {
+    public User(int userId, String userName, String email, String hashedPassword, String salt) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
@@ -57,13 +56,15 @@ public class User {
         return email;
     }
 
-
-    public ByteString getHashedPassword() {
+    @JsonProperty
+    @XmlElement
+    public String getHashedPassword() {
         return hashedPassword;
     }
 
-
-    public ByteString getSalt() {
+    @JsonProperty
+    @XmlElement
+    public String getSalt() {
         return salt;
     }
 
@@ -79,22 +80,12 @@ public class User {
         this.email = email;
     }
 
-    public void setHashedPassword(ByteString hashedPassword) {
+    public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
     }
 
-    public void setSalt(ByteString salt) {
+    public void setSalt(String salt) {
         this.salt = salt;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", hashedPassword=" + hashedPassword +
-                ", salt=" + salt +
-                '}';
-    }
 }

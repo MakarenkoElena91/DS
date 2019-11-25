@@ -8,6 +8,22 @@
   <component name="ChangeListManager">
     <list default="true" id="c44e68bd-182a-465f-bb5d-903691ec54bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserApiResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ie/gmit/ds/UserPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/p2/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/PasswordService.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/protoc-plugins/protoc-3.9.0-linux-x86_64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/target/protoc-plugins/protoc-3.9.0-linux-x86_64.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/protoc-plugins/protoc-gen-grpc-java-1.23.0-linux-x86_64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/target/protoc-plugins/protoc-gen-grpc-java-1.23.0-linux-x86_64.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/PasswordService.kotlin_module" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +57,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/ie" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/p2/META-INF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -131,9 +147,9 @@
       <list>
         <item itemvalue="Application.App" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="JAR Application.PasswordService-1.0-SNAPSHOT.jar" />
         <item itemvalue="JAR Application.PasswordService.jar" />
         <item itemvalue="Application.Client" />
-        <item itemvalue="JAR Application.PasswordService-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -155,6 +171,7 @@
       <workItem from="1572882266751" duration="37593000" />
       <workItem from="1573050355418" duration="558000" />
       <workItem from="1573488076740" duration="1686000" />
+      <workItem from="1574697368362" duration="270000" />
     </task>
     <servers />
   </component>

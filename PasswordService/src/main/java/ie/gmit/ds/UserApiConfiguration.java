@@ -3,7 +3,6 @@ package ie.gmit.ds;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -23,14 +22,10 @@ public class UserApiConfiguration extends Configuration {
         this.passwordServiceIp = passwordServiceIp;
     }
 
-    @JsonProperty
-    @XmlElement
     public int getPasswordServicePort() {
         return passwordServicePort;
     }
 
-    @JsonProperty
-    @XmlElement
     public void setPasswordServicePort(int passwordServicePort) {
         this.passwordServicePort = passwordServicePort;
     }

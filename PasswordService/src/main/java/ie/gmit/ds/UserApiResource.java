@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Set;
 
@@ -52,49 +53,47 @@ public class UserApiResource {
 
     @POST
     public Response createUser(UserPassword userPassword) {
+        Response response;
         LOGGER.info("POST: createUser() - {}", userPassword);
+            User e = userDB.getUser(userPassword.getUser().getUserId());
+            if (e == null) {
+                HashRequest request = HashRequest.newBuilder()
+                        .setUserId(userPassword.getUser().getUserId())
+                        .setPassword(userPassword.getPassword())
+                        .build();
+                StreamObserver<HashResponse> responseObserver = new StreamObserver<HashResponse>() {
+                    User newUser;
 
-        User e = userDB.getUser(userPassword.getUser().getUserId());
-        if (e == null) {
-            HashRequest request = HashRequest.newBuilder()
-                    .setUserId(userPassword.getUser().getUserId())
-                    .setPassword(userPassword.getPassword())
-                    .build();
-            StreamObserver<HashResponse> responseObserver = new StreamObserver<HashResponse>() {
-                User newUser;
+                    @Override
+                    public void onNext(HashResponse hashResponse) {
+                        newUser = new User(userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), Base64.getEncoder().encodeToString(hashResponse.getHashedPassword().toByteArray()), Base64.getEncoder().encodeToString(hashResponse.getSalt().toByteArray()));
+                        userDB.updateUser(newUser.getUserId(), newUser);
+                        LOGGER.info("Created new user: " + hashResponse);
+                    }
 
-                @Override
-                public void onNext(HashResponse hashResponse) {
-                    ByteString salt = hashResponse.getSalt();
-                    ByteString hashedPassword = hashResponse.getHashedPassword();
-                    newUser = new User(userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), hashedPassword, salt);
-                    userDB.updateUser(newUser.getUserId(), newUser);
-                    LOGGER.info("Created new user: " + hashResponse);
-                }
+                    @Override
+                    public void onError(Throwable throwable) {
+                        LOGGER.error("RPC Error: {}", throwable.getMessage());
+                    }
 
-                @Override
-                public void onError(Throwable throwable) {
-                    LOGGER.error("RPC Error: {}", throwable.getMessage());
-                }
+                    @Override
+                    public void onCompleted() {
+                        userDB.updateUser(userPassword.getUser().getUserId(), newUser);
+                    }
+                };
 
-                @Override
-                public void onCompleted() {
-                    userDB.updateUser(userPassword.getUser().getUserId(), newUser);
-                }
-            };
+                client.hashPassword(request, responseObserver);
 
-            client.hashPassword(request, responseObserver);
-
-            return Response.ok("User was added").build();
-        } else {
-            return Response.status(Status.FORBIDDEN).build();
-        }
+                return Response.ok("User will be asynchronously added").build();
+            } else {
+                response = Response.status(Status.FORBIDDEN).build();
+            }
+        return response;
     }
 
     @PUT
     @Path("/{id}")
     public Response updateUserById(@PathParam("id") Integer id, UserPassword userPassword) {
-
         Set<ConstraintViolation<UserPassword>> violations = validator.validate(userPassword);
         User e = userDB.getUser(userPassword.getUser().getUserId());
         if (violations.size() > 0) {
@@ -114,10 +113,7 @@ public class UserApiResource {
 
                 @Override
                 public void onNext(HashResponse hashResponse) {
-                    ByteString salt = hashResponse.getSalt();
-                    ByteString hashedPassword = hashResponse.getHashedPassword();
-                    newUser = new User(userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), hashedPassword, salt);
-
+                    newUser = new User(userPassword.getUser().getUserId(), userPassword.getUser().getUserName(), userPassword.getUser().getEmail(), Base64.getEncoder().encodeToString(hashResponse.getHashedPassword().toByteArray()), Base64.getEncoder().encodeToString(hashResponse.getSalt().toByteArray()));
                     LOGGER.info("Updated new user: " + hashResponse);
                 }
 
@@ -128,7 +124,6 @@ public class UserApiResource {
 
                 @Override
                 public void onCompleted() {
-                    userDB.updateUser(userPassword.getUser().getUserId(), newUser);
                 }
             };
 
@@ -136,7 +131,7 @@ public class UserApiResource {
 
             userPassword.getUser().setUserId(id);
             userDB.updateUser(id, userPassword.getUser());
-            return Response.ok("User was updated: {}").build();
+            return Response.ok("User will be asynchronously updated: {}").build();
         } else
             return Response.status(Status.NOT_FOUND).build();
     }
@@ -162,10 +157,11 @@ public class UserApiResource {
             String pass = userPassword.getPassword();
 
             ValidationRequest validationRequest = ValidationRequest.newBuilder()
-                    .setHashedPassword(userInDB.getHashedPassword())
                     .setPassword(pass)
-                    .setSalt(userInDB.getSalt())
+                    .setHashedPassword(ByteString.copyFrom(Base64.getDecoder().decode(userInDB.getHashedPassword())))
+                    .setSalt(ByteString.copyFrom(Base64.getDecoder().decode(userInDB.getSalt())))
                     .build();
+
             BoolValue boolValue = client.validatePassword(validationRequest);
 
             if (userPassword != null) {
